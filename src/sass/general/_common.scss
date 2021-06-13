@@ -1,0 +1,44 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: $primary-background-color;
+  font-family: $font-family;
+}
+
+a {
+  text-decoration: none;
+  font-style: normal;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// Переиспользуемые классы
+
+.container {
+  padding-right: 25px;
+  padding-left: 25px;
+  margin: 0 auto;
+  width: 100%;
+  min-width: 320px;
+
+  @media screen and (min-width: 768px) {
+    width: 768px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 1080px;
+  }
+}
