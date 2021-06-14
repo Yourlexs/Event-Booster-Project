@@ -9,6 +9,7 @@ const eventsApi = {
             const searchRequest = `${BASE_URL}events.json?&keyword=${keyWord}&apikey=${API_KEY}&size=12&${page}`;
             const responce = await fetch(searchRequest);
             const result = await responce.json();
+            // console.log(result._embedded.events); 
             return result;
         } catch (err) { return err };
     },
@@ -18,6 +19,7 @@ const eventsApi = {
             const searchRequest = `${BASE_URL}events.json?&countryCode=${countryCode}&apikey=${API_KEY}&size=12&${page}`;
             const responce = await fetch(searchRequest);
             const result = await responce.json();
+            // console.log(result._embedded.events); 
             return result;
         } catch (err) { return err };
     },
@@ -27,6 +29,7 @@ const eventsApi = {
             const searchRequest = `${BASE_URL}events.json?&keyword=${keyWord}&countryCode=${countryCode}&apikey=${API_KEY}&size=12&${page}`;
             const responce = await fetch(searchRequest);
             const result = await responce.json();
+            // console.log(result._embedded.events); 
             return result;
         } catch (err) { return err };
 

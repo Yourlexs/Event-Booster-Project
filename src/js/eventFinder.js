@@ -1,8 +1,8 @@
 import eventApi from './apiService';
-import listBuilder from './listBuilder';
+import listBuilder from './htmlBuilder';
 
 const refs = {
-    form: document.querySelector('form'),
+    form: document.querySelector('#js-form'),
     input: document.querySelector('#js-input'),
     select: document.querySelector('#js-select')
 };
