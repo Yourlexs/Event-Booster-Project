@@ -1,0 +1,99 @@
+// page-footer
+.page-footer {
+  outline: 1px solid red;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 27px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 19px;
+  }
+}
+
+.inner {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination {
+  display: flex;
+
+  margin: 0px;
+  margin-bottom: 60px;
+
+  width: 233px;
+  height: 30px;
+
+  @media screen and (min-width: 1280px) {
+    margin-bottom: 80px;
+  }
+}
+
+.link {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 30px;
+  height: 30px;
+
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+
+  color: $white-text-color;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+}
+
+.ellipsis {
+  width: 30px;
+  height: 30px;
+  margin: 0px;
+  margin-right: 5px;
+  text-align: center;
+
+  color: $white-text-color;
+}
+
+.link:not(:last-child) {
+  margin: 0px;
+  margin-right: 5px;
+}
+
+.link:hover,
+.link:focus {
+  color: $more-btn-hover-color;
+  border: 1px solid #dc56c5;
+
+  box-sizing: border-box;
+  border-radius: 10px 0px;
+  cursor: pointer;
+}
+
+.copy {
+  margin: 0px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  padding-right: 25px;
+  padding-left: 25px;
+
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+
+  text-align: center;
+
+  color: $secondary-text-color;
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    line-height: 1.21;
+  }
+}
