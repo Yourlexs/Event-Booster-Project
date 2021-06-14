@@ -1,4 +1,5 @@
-import eventApi from './apiService'
+import eventApi from './apiService';
+import listBuilder from './listBuilder';
 
 const refs = {
     form: document.querySelector('form'),
@@ -24,34 +25,41 @@ function inputHandler(event) {
 
     if (!findWord && country.length === 2) {
         console.log('поиск по стране (инпут)')
-        eventApi.getByCountry(country).then(console.log);
+        eventApi.getByCountry(country).then(listBuilder);
         return
     }
 
     if (findWord && country.length === 2) {
         console.log('поиск по стране и слову (нпут)')
-        eventApi.getByKeyAndCountry(findWord, country).then(console.log);
+        eventApi.getByKeyAndCountry(findWord, country).then(listBuilder);
         return
     };
 
     console.log('поиск по слову (инпут)')
-    eventApi.getByKey(findWord).then(console.log);
+    eventApi.getByKey(findWord).then(listBuilder);
 
 };
 
 function selectHandler(event) {
     const country = event.target.value;
-    const findWord = refs.input.value;
+    const findWord = refs.input.value.trim();
 
     if (country.length > 2) { return };
 
     if (findWord) {
         console.log('поиск по стране и слову (селектор)')
-        eventApi.getByKeyAndCountry(findWord, country).then(console.log);
+        eventApi.getByKeyAndCountry(findWord, country).then(listBuilder);
         return
     };
 
     console.log('поиск по стране (селектор)')
-    eventApi.getByCountry(country).then(console.log);
+    eventApi.getByCountry(country).then(listBuilder);
 };
+    
+
+
+
+    
+
+
 
