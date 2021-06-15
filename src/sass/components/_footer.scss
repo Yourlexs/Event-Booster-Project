@@ -43,6 +43,15 @@
 
   color: $white-text-color;
 
+  &.link--current {
+    color: $more-btn-hover-color;
+    border: 1px solid $more-btn-hover-color;
+
+    box-sizing: border-box;
+    border-radius: 10px 0px;
+    cursor: pointer;
+  }
+
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 1.25;
