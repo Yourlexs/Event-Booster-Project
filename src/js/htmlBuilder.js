@@ -1,3 +1,6 @@
+import { all } from 'q';
+import apiSearch from './apiService';
+
 const refs = {
     form: document.querySelector('#js-form'),
     input: document.querySelector('#js-input'),
@@ -56,31 +59,54 @@ function pagesBuilder(data) {
         pageSymbol.textContent = '...';
         lastElementOfPages.before(pageSymbol);
     }
+};
+
+function listBuilderFromPages(data) {
+    console.log(data);
+    ulElement.innerHTML = '';
+    if (!data.page.totalElements) { return console.log('подходящих ивентов не найдено') };
     
+    const events = data._embedded.events;
+
+    refs.form.after(ulElement);
+    const liElement = document.createElement('li');
     
+    events.forEach(item => {
+        const liElement = document.createElement('li');
+        liElement.textContent = `здесь будут карточки, а пока имя исполнителя - ${item.name}`;
+        ulElement.append(liElement);
+    });
+
 };
 
 function pageLinkHandler(event) {
+    const findword = refs.input.value.trim();
+    const country = refs.select.value;
+    const page = event.target.textContent - 1;
 
+    if (findword && country.length > 2) {
+
+        apiSearch.getByKey(findword, page).then(listBuilderFromPages);
+    };
+
+    if (!findword && country.length === 2) {
+        apiSearch.getByCountry(country, page).then(listBuilderFromPages);
+    };
+
+    if (findword && country.length === 2) {
+        apiSearch.getByKeyAndCountry(findword, country, page).then(listBuilderFromPages);
+    };
+
+    
 }
 
 
-// function listBuilderFromPages(data) {
-//     // console.log(data);
-//     ulElement.innerHTML = '';
-//     if (!data.page.totalElements) { return console.log('подходящих ивентов не найдено') };
-    
-//     const events = data._embedded.events;
 
-//     refs.form.after(ulElement);
-//     const liElement = document.createElement('li');
-    
-//     events.forEach(item => {
-//         const liElement = document.createElement('li');
-//         liElement.textContent = `здесь будут карточки, а пока имя исполнителя - ${item.name}`;
-//         ulElement.append(liElement);
-//     });
+// pageNumberSwitcher(event);
 
-// };
+// function pageNumberSwitcher(clickPage) {
+//     const allPages = document.querySelectorAll('a.link');
+//     console.log(allPages, 'все странички');
+// }
 
 export default listBuilderFromForm;

@@ -44,6 +44,7 @@ function selectHandler(event) {
     const country = event.target.value;
     const findWord = refs.input.value.trim();
 
+
     if (country.length > 2) { return };
 
     if (findWord) {
@@ -56,6 +57,8 @@ function selectHandler(event) {
     eventApi.getByCountry(country).then(listBuilder);
 };
     
+
+
 
 
 
