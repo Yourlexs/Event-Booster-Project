@@ -51,6 +51,10 @@ ul li {
   &:focus,
   &:active {
     outline: none;
+
+    background-color: $search-fields-background-color;
+    backdrop-filter: blur(20px);
+    color: $secondary-text-color;
   }
 
   @media screen and (min-width: $tablet) {
@@ -81,6 +85,7 @@ ul li {
   width: 12px;
   height: 12px;
   fill: $secondary-text-color;
+  pointer-events: none;
 }
 
 .select-country {
