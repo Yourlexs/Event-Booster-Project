@@ -1,18 +1,22 @@
 {{#each this}}
 <li>
     <div class="photo-card">
-        <img src="images" alt="name">
+        <picture>
+            {{#each images}}
+            <source srcset="{{this.url}}" />{{/each}}
+            <img src="" alt="" class="" />
+        </picture>
 
-  <div class="info">
+    <div class="info">
         <p class="stats-item">
-           {{name}}
+            {{name}}
         </p>
         <p class="stats-item">
-{{endDateTime}}
+            {{dates.start.localDate}}
         </p>
         <p class="stats-item">
             <i class="material-icons">room</i>
-{{timezone}}
+            {{dates.timezone}}
         </p>
     </div>
     </div>
