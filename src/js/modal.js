@@ -4,12 +4,12 @@ import modalTpl from '../temlates/modal.hbs';
 
 // Логика работы модального окна
 
-const openModalBtnEl = document.querySelector('.open-button');
+// const openModalBtnEl = document.querySelector('.open-button');
 const closeModalBtnEl = document.querySelector('.close-button');
 const backdropEl = document.querySelector('.backdrop');
 const modalInfoEl = document.querySelector('.modal__main-container');
 
-openModalBtnEl.addEventListener('click', openModal);
+// openModalBtnEl.addEventListener('click', openModal);
 closeModalBtnEl.addEventListener('click', closeModal);
 backdropEl.addEventListener('click', (event) => {
   if (event.target === event.currentTarget) closeModal();
@@ -22,7 +22,10 @@ function openModal() {
 
 function closeModal() {
   toggleModal();
-  clearModalInfo();
+
+  // Вызов очистки модалки с задержкой для завершения её анимации
+  setTimeout(clearModalInfo, 250);
+  // clearModalInfo();
 };
 
 function toggleModal() {
