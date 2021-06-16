@@ -12,6 +12,7 @@ const ulElement = document.createElement('ul');
 function listBuilderFromForm(data) {
     // console.log(data);
     ulElement.innerHTML = '';
+    refs.pagination.innerHTML = '';
     if (!data.page.totalElements) { return console.log('подходящих ивентов не найдено') };
     
     const events = data._embedded.events;
@@ -51,7 +52,7 @@ function pagesBuilder(data) {
 
     if (totalPages > maximumPageLinks) {
         const lastElementOfPages = allPageLinkElements[allPageLinkElements.length - 1];
-        lastElementOfPages.textContent = totalPages;
+        totalPages > 50 ? lastElementOfPages.textContent = 50 : lastElementOfPages.textContent = totalPages;
 
         const pageSymbol = document.createElement('span');
         pageSymbol.classList.add('ellipsis');
@@ -61,7 +62,7 @@ function pagesBuilder(data) {
 };
 
 function listBuilderFromPages(data) {
-    console.log(data);
+    // console.log(data);
     ulElement.innerHTML = '';
     if (!data.page.totalElements) { return console.log('подходящих ивентов не найдено') };
     
@@ -75,7 +76,6 @@ function listBuilderFromPages(data) {
         liElement.textContent = `здесь будут карточки, а пока имя исполнителя - ${item.name}`;
         ulElement.append(liElement);
     });
-
 };
 
 function pageLinkHandler(event) {
@@ -96,16 +96,85 @@ function pageLinkHandler(event) {
         apiSearch.getByKeyAndCountry(findword, country, page).then(listBuilderFromPages);
     };
 
+        pageNumberSwitcher(event);
+};
+
+
+
+function pageNumberSwitcher(event) {
+    let allPages = document.querySelectorAll('a.link');
+    const clickedPageNumer = event.target.textContent;
+    const firsPageNumber = allPages[0].textContent;
+    const lastPageNumber = allPages[allPages.length - 1].textContent;
+
     
-}
+    
+    if (lastPageNumber > 6) {
+
+        if (clickedPageNumer <= 4) {
+            const template = `
+            <a class="link" href="#1">1</a>
+            <a class="link" href="#2">2</a>
+            <a class="link" href="#3">3</a>
+            <a class="link" href="#4">4</a>
+            <a class="link" href="#5">5</a>
+            <span class="ellipsis">...</span>
+            <a class="link" href="#${lastPageNumber}">${lastPageNumber}</a>`;
+            refs.pagination.innerHTML = template;
+            const newAllPages = document.querySelectorAll('.link');
+            newAllPages.forEach(item => item.addEventListener('click', pageLinkHandler));
+            newAllPages.forEach(item => {
+                item.textContent === clickedPageNumer ? item.classList.add('link--current') : true;
+            });
+        };
+
+        if (clickedPageNumer > 4 && clickedPageNumer < (lastPageNumber - 3)) {
+            const template = `
+            <a class="link" href="#1">1</a>
+            <span class="ellipsis">...</span>
+            <a class="link" href="#3">${parseInt(clickedPageNumer) - 1}</a>
+            <a class="link" href="#4">${clickedPageNumer}</a>
+            <a class="link" href="#5">${parseInt(clickedPageNumer) + 1}</a>
+            <span class="ellipsis">...</span>
+            <a class="link" href="#${lastPageNumber}">${lastPageNumber}</a>`;
+            refs.pagination.innerHTML = template;
+            const newAllPages = document.querySelectorAll('.link');
+            newAllPages.forEach(item => item.addEventListener('click', pageLinkHandler));
+            newAllPages.forEach(item => {
+                item.textContent === clickedPageNumer ? item.classList.add('link--current') : true;
+            });
+        };
+
+        if (clickedPageNumer > (lastPageNumber - 4)) {
+            
+            const template = `
+            <a class="link" href="#1">1</a>
+            <span class="ellipsis">...</span>
+            <a class="link" href="#2">${parseInt(lastPageNumber) - 4}</a>
+            <a class="link" href="#3">${parseInt(lastPageNumber) - 3}</a>
+            <a class="link" href="#4">${parseInt(lastPageNumber) - 2}</a>
+            <a class="link" href="#5">${parseInt(lastPageNumber) - 1}</a>
+            <a class="link" href="#${lastPageNumber}">${lastPageNumber}</a>`;
+
+            refs.pagination.innerHTML = template;
+            const newAllPages = document.querySelectorAll('.link');
+            newAllPages.forEach(item => item.addEventListener('click', pageLinkHandler));
+            newAllPages.forEach(item => {
+                item.textContent === clickedPageNumer ? item.classList.add('link--current') : true;
+            });
+
+        };
+    
+        return
+    };
 
 
-
-// pageNumberSwitcher(event);
-
-// function pageNumberSwitcher(clickPage) {
-//     const allPages = document.querySelectorAll('a.link');
-//     console.log(allPages, 'все странички');
-// }
+    if (lastPageNumber < 6) {
+        allPages.forEach(item => { item.classList.contains('link--current') ? item.classList.remove('link--current') : true; });
+        event.target.classList.add('link--current');
+        return
+    };
+    
+};
 
 export default listBuilderFromForm;
