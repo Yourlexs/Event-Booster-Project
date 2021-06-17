@@ -1,4 +1,5 @@
 import apiSearch from './apiService';
+import eventTpl from '../temlates/event.hbs';
 
 const refs = {
     form: document.querySelector('#js-form'),
@@ -7,7 +8,8 @@ const refs = {
     pagination: document.querySelector('#js-pagination')
 };
 
-const ulElement = document.createElement('ul');
+// 
+const ulElement = document.querySelector('.list-allExecutor');
     
 function listBuilderFromForm(data) {
     // console.log(data);
@@ -18,14 +20,15 @@ function listBuilderFromForm(data) {
     const events = data._embedded.events;
 
     refs.form.after(ulElement);
-    const liElement = document.createElement('li');
+    // const liElement = document.createElement('li');
     
-    events.forEach(item => {
-        const liElement = document.createElement('li');
-        liElement.textContent = `здесь будут карточки, а пока имя исполнителя - ${item.name}`;
-        ulElement.append(liElement);
-    });
-
+    // events.forEach(item => {
+    //     const liElement = document.createElement('li');
+    //     liElement.textContent = `здесь будут карточки, а пока имя исполнителя - ${item.name}`;
+    //     ulElement.append(liElement);
+    // });
+    const x = eventTpl(events);
+    ulElement.insertAdjacentHTML('beforeend', x);
     pagesBuilder(data);
 };
 
