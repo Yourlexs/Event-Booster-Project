@@ -1,4 +1,7 @@
 import apiSearch from './apiService';
+import templateForCard from '../temlates/event.hbs';
+
+
 
 const refs = {
     form: document.querySelector('#js-form'),
@@ -7,19 +10,18 @@ const refs = {
     pagination: document.querySelector('#js-pagination')
 };
 
+
 const ulElement = document.createElement('ul');
     
 function listBuilderFromForm(data) {
-    // console.log(data);
+    console.log(data);
     ulElement.innerHTML = '';
     refs.pagination.innerHTML = '';
     if (!data.page.totalElements) { return console.log('подходящих ивентов не найдено') };
-    
     const events = data._embedded.events;
 
     refs.form.after(ulElement);
-    const liElement = document.createElement('li');
-    
+
     events.forEach(item => {
         const liElement = document.createElement('li');
         liElement.textContent = `здесь будут карточки, а пока имя исполнителя - ${item.name}`;

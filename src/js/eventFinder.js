@@ -13,7 +13,6 @@ function formHandler(event) {
     event.preventDefault();
 };
 
-
 refs.input.addEventListener('change', inputHandler);
 refs.select.addEventListener('change', selectHandler);
 
