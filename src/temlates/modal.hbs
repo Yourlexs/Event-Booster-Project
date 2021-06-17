@@ -1,51 +1,47 @@
 <div class="modal__top-image-container">
-  <img class="modal__top-image" src="https://b.radikal.ru/b34/2106/9a/5204680e583a.jpg" alt="Исполнитель">
+  <picture>
+    {{#each images}}
+    <source srcset="{{this.url}}" width="{{this.width}}" height="{{this.height}}" @media screen and (min-aspect-ratio:
+      {{this.ratio}}) />{{/each}}
+    <img src="" alt="Исполнитель" class="modal__top-image" />
+  </picture>
 </div>
 
 <div class="modal__information-container">
   <div class="modal__side-image-container">
-    <img class="modal__side-image" src="https://a.radikal.ru/a02/2106/37/f538e013ff44.jpg" alt="Исполнитель">
+    <picture>
+      {{#each images}}
+      <source srcset="{{this.url}}" width="{{this.width}}p" height="{{this.height}}" @media screen and
+        (min-aspect-ratio: {{this.ratio}}) />{{/each}}
+      <img src="" alt="Исполнитель" class="modal__side-image" />
+    </picture>
   </div>
 
   <div class="modal__main-information">
     <h2 class="modal__subheader">Info</h2>
-    <p class="modal__text">Atlas Weekend is the largest music festival
-      in Ukraine. More than 200 artists will create
-      a proper music festival atmosphere on 10 stages</p>
+    <p class="modal__text">{{info}}</p>
     <h2 class="modal__subheader">When</h2>
-    <p class="modal__text">2021-06-09<br>20:00 (Kyiv/Ukraine)</p>
+    <p class="modal__text">{{dates.start.localDate}}<br>{{dates.start.localTime}} ({{dates.timezone}})</p>
     <h2 class="modal__subheader">Where</h2>
-    <p class="modal__text">Kyiv, Ukraine<br>VDNH</p>
+    <p class="modal__text">{{#each _embedded.venues}}{{this.city.name}}{{/each}}, {{#each
+      _embedded.venues}}{{this.country.name}}{{/each}}<br>{{#each _embedded.venues}}{{this.name}}{{/each}}</p>
     <h2 class="modal__subheader">Who</h2>
-    <p class="modal__text">The Black Eyed Peas</p>
+    <p class="modal__text">{{name}}</p>
     <h2 class="modal__subheader">Prices</h2>
-
+    {{#each priceRanges}}
     <div class="modal__ticket-container">
       <p class="modal__text">
         <svg class="modal__ticket-barcode">
           <path
             d="M2.67 0H0v16h2.67zm6.7 0H6.71v16h2.66zm4 0h-2.62v16h2.66zM24 0h-4v16h4zM5.33 0H4v16h1.33zM16 0h-1.29v16H16zm2.67 0h-1.3v16h1.3z" />
         </svg>
-        Standard 300-500 UAH
+        {{this.type}} {{this.min}}-{{this.max}} {{this.currency}}
       </p>
-      <a class="modal__buy-tickets-link" href="#" target="_blank" title="More from this author">
+      <a class="modal__buy-tickets-link" href="{{url}}" target="_blank" title="More from this author">
         Buy tickets
       </a>
     </div>
-
-    <div class="modal__ticket-container">
-      <p class="modal__text">
-        <svg class="modal__ticket-barcode">
-          <path
-            d="M2.67 0H0v16h2.67zm6.7 0H6.71v16h2.66zm4 0h-2.62v16h2.66zM24 0h-4v16h4zM5.33 0H4v16h1.33zM16 0h-1.29v16H16zm2.67 0h-1.3v16h1.3z" />
-          {{!-- <use href="../src/images/sprite.svg#ticket-barcode"></use> --}}
-        </svg>
-        VIP 1000-1500 UAH
-      </p>
-      <a class="modal__buy-tickets-link" href="#" target="_blank" title="More from this author">
-        Buy tickets
-      </a>
-    </div>
+    {{/each}}
 
   </div>
 </div>
