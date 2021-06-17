@@ -33,7 +33,7 @@ const eventsApi = {
 
     async getById(id) {
         try {
-            const searchRequest = `${BASE_URL}events.json?&apikey=${API_KEY}&size=12&id=${id}`;
+            const searchRequest = `${BASE_URL}events.json?&apikey=${API_KEY}&id=${id}`;
             const responce = await fetch(searchRequest);
             const result = await responce.json();
             return result;
