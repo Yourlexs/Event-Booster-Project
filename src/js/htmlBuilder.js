@@ -1,6 +1,5 @@
 import apiSearch from './apiService';
-import templateForCard from '../temlates/event.hbs';
-
+import eventTpl from '../temlates/event.hbs';
 
 
 const refs = {
@@ -10,8 +9,7 @@ const refs = {
     pagination: document.querySelector('#js-pagination')
 };
 
-
-const ulElement = document.createElement('ul');
+const ulElement = document.querySelector('.list-allExecutor');
     
 function listBuilderFromForm(data) {
     console.log(data);
@@ -22,12 +20,15 @@ function listBuilderFromForm(data) {
 
     refs.form.after(ulElement);
 
-    events.forEach(item => {
-        const liElement = document.createElement('li');
-        liElement.textContent = `здесь будут карточки, а пока имя исполнителя - ${item.name}`;
-        ulElement.append(liElement);
-    });
-
+    // const liElement = document.createElement('li');
+    
+    // events.forEach(item => {
+    //     const liElement = document.createElement('li');
+    //     liElement.textContent = `здесь будут карточки, а пока имя исполнителя - ${item.name}`;
+    //     ulElement.append(liElement);
+    // });
+    const x = eventTpl(events);
+    ulElement.insertAdjacentHTML('beforeend', x);
     pagesBuilder(data);
 };
 

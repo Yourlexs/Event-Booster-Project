@@ -4,27 +4,30 @@ import modalTpl from '../temlates/modal.hbs';
 
 // Логика работы модального окна
 
-// const openModalBtnEl = document.querySelector('.open-button');
+const openModalEl = document.querySelector('.list-allExecutor');
 const closeModalBtnEl = document.querySelector('.close-button');
 const backdropEl = document.querySelector('.backdrop');
 const modalInfoEl = document.querySelector('.modal__main-container');
 
-// openModalBtnEl.addEventListener('click', openModal);
+openModalEl.addEventListener('click', openModal);
 closeModalBtnEl.addEventListener('click', closeModal);
 backdropEl.addEventListener('click', (event) => {
   if (event.target === event.currentTarget) closeModal();
 });
 
-function openModal() {
+
+function openModal(e) {
+  const isEvent = e.target.classList.contains('page-albom');
+  if (!isEvent) {
+        return;
+  }
+  clearModalInfo();
   renderModalInfo();
   toggleModal();
 };
 
 function closeModal() {
   toggleModal();
-
-  // Вызов очистки модалки с задержкой для завершения её анимации
-  setTimeout(clearModalInfo, 250);
   // clearModalInfo();
 };
 
