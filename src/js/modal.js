@@ -21,15 +21,13 @@ function openModal(e) {
   if (!isEvent) {
         return;
   }
+  clearModalInfo();
   renderModalInfo();
   toggleModal();
 };
 
 function closeModal() {
   toggleModal();
-
-  // Вызов очистки модалки с задержкой для завершения её анимации
-  setTimeout(clearModalInfo, 250);
   // clearModalInfo();
 };
 
