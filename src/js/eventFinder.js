@@ -1,3 +1,4 @@
+import eventsApi from './apiService';
 import eventApi from './apiService';
 import listBuilder from './htmlBuilder';
 
@@ -55,6 +56,7 @@ function selectHandler(event) {
     eventApi.getByCountry(country).then(listBuilder);
 };
     
+
 
 
 

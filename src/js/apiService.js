@@ -29,7 +29,15 @@ const eventsApi = {
             const result = await responce.json();
             return result;
         } catch (err) { return err };
+    },
 
+    async getById(id) {
+        try {
+            const searchRequest = `${BASE_URL}events.json?&apikey=${API_KEY}&size=12&id=${id}`;
+            const responce = await fetch(searchRequest);
+            const result = await responce.json();
+            return result;
+        } catch (err) { return err };
     }
 };
 
