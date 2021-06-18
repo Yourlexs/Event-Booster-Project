@@ -1,7 +1,7 @@
 <div class="modal__top-image-container">
   <picture>
     {{#each images}}
-    <source srcset="{{this.url}}" width="{{this.width}}" height="{{this.height}}" @media screen and (min-aspect-ratio:
+    <source srcset="{{this.url}}"  @media screen and (min-aspect-ratio:
       {{this.ratio}}) />{{/each}}
     <img src="" alt="Исполнитель" class="modal__top-image" />
   </picture>

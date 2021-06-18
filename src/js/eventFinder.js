@@ -1,5 +1,5 @@
 import eventApi from './apiService';
-import listBuilder from './htmlBuilder';
+import * as htmlConstructor from './htmlBuilder';
 
 const refs = {
     form: document.querySelector('form'),
@@ -24,18 +24,18 @@ function inputHandler(event) {
 
     if (!findWord && country.length === 2) {
         console.log('поиск по стране (инпут)')
-        eventApi.getByCountry(country).then(listBuilder).catch(console.log);
+        eventApi.getByCountry(country).then(htmlConstructor.listBuilderFromForm).catch(console.log);
         return
     }
 
     if (findWord && country.length === 2) {
         console.log('поиск по стране и слову (нпут)')
-        eventApi.getByKeyAndCountry(findWord, country).then(listBuilder).catch(console.log);
+        eventApi.getByKeyAndCountry(findWord, country).then(htmlConstructor.listBuilderFromForm).catch(console.log);
         return
     };
 
     console.log('поиск по слову (инпут)')
-    eventApi.getByKey(findWord).then(listBuilder).catch(console.log);
+    eventApi.getByKey(findWord).then(htmlConstructor.listBuilderFromForm).catch(console.log);
 
 };
 
@@ -47,12 +47,12 @@ function selectHandler(event) {
 
     if (findWord) {
         console.log('поиск по стране и слову (селектор)')
-        eventApi.getByKeyAndCountry(findWord, country).then(listBuilder).catch(console.log);
+        eventApi.getByKeyAndCountry(findWord, country).then(htmlConstructor.listBuilderFromForm).catch(console.log);
         return
     };
 
     console.log('поиск по стране (селектор)')
-    eventApi.getByCountry(country).then(listBuilder).catch(console.log);
+    eventApi.getByCountry(country).then(htmlConstructor.listBuilderFromForm).catch(console.log);
 };
     
 
