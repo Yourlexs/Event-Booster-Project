@@ -13,7 +13,6 @@ function formHandler(event) {
     event.preventDefault();
 };
 
-
 refs.input.addEventListener('change', inputHandler);
 refs.select.addEventListener('change', selectHandler);
 
@@ -25,18 +24,18 @@ function inputHandler(event) {
 
     if (!findWord && country.length === 2) {
         console.log('поиск по стране (инпут)')
-        eventApi.getByCountry(country).then(listBuilder);
+        eventApi.getByCountry(country).then(listBuilder).catch(console.log);
         return
     }
 
     if (findWord && country.length === 2) {
         console.log('поиск по стране и слову (нпут)')
-        eventApi.getByKeyAndCountry(findWord, country).then(listBuilder);
+        eventApi.getByKeyAndCountry(findWord, country).then(listBuilder).catch(console.log);
         return
     };
 
     console.log('поиск по слову (инпут)')
-    eventApi.getByKey(findWord).then(listBuilder);
+    eventApi.getByKey(findWord).then(listBuilder).catch(console.log);
 
 };
 
@@ -48,14 +47,15 @@ function selectHandler(event) {
 
     if (findWord) {
         console.log('поиск по стране и слову (селектор)')
-        eventApi.getByKeyAndCountry(findWord, country).then(listBuilder);
+        eventApi.getByKeyAndCountry(findWord, country).then(listBuilder).catch(console.log);
         return
     };
 
     console.log('поиск по стране (селектор)')
-    eventApi.getByCountry(country).then(listBuilder);
+    eventApi.getByCountry(country).then(listBuilder).catch(console.log);
 };
     
+
 
 
 

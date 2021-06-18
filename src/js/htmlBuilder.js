@@ -1,35 +1,29 @@
 import apiSearch from './apiService';
 import eventTpl from '../temlates/event.hbs';
+import modalListener from './modal'
 
 const refs = {
     form: document.querySelector('#js-form'),
     input: document.querySelector('#js-input'),
     select: document.querySelector('#js-select'),
-    pagination: document.querySelector('#js-pagination')
+    pagination: document.querySelector('#js-pagination'),
+    eventsSection: document.querySelector('#js-event-list')
 };
 
-// 
 const ulElement = document.querySelector('.list-allExecutor');
-    
+
+
 function listBuilderFromForm(data) {
     // console.log(data);
     ulElement.innerHTML = '';
     refs.pagination.innerHTML = '';
     if (!data.page.totalElements) { return console.log('подходящих ивентов не найдено') };
-    
     const events = data._embedded.events;
-
-    refs.form.after(ulElement);
-    // const liElement = document.createElement('li');
     
-    // events.forEach(item => {
-    //     const liElement = document.createElement('li');
-    //     liElement.textContent = `здесь будут карточки, а пока имя исполнителя - ${item.name}`;
-    //     ulElement.append(liElement);
-    // });
-    const x = eventTpl(events);
-    ulElement.insertAdjacentHTML('beforeend', x);
+    const cardListHtml = eventTpl(events);
+    ulElement.insertAdjacentHTML('beforeend', cardListHtml);
     pagesBuilder(data);
+    modalListener();
 };
 
 function pagesBuilder(data) {
@@ -65,20 +59,14 @@ function pagesBuilder(data) {
 };
 
 function listBuilderFromPages(data) {
-    // console.log(data);
     ulElement.innerHTML = '';
+    // refs.pagination.innerHTML = '';
     if (!data.page.totalElements) { return console.log('подходящих ивентов не найдено') };
-    
     const events = data._embedded.events;
-
-    refs.form.after(ulElement);
-    const liElement = document.createElement('li');
     
-    events.forEach(item => {
-        const liElement = document.createElement('li');
-        liElement.textContent = `здесь будут карточки, а пока имя исполнителя - ${item.name}`;
-        ulElement.append(liElement);
-    });
+    const cardListHtml = eventTpl(events);
+    ulElement.insertAdjacentHTML('beforeend', cardListHtml);
+    modalListener();
 };
 
 function pageLinkHandler(event) {
@@ -179,5 +167,7 @@ function pageNumberSwitcher(event) {
     };
     
 };
+
+
 
 export default listBuilderFromForm;
