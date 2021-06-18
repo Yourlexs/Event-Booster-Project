@@ -38,7 +38,17 @@ const eventsApi = {
             const result = await responce.json();
             return result;
         } catch (err) { return err };
+    },
+
+    async getRandom(page = 0) {
+        try {
+            const searchRequest = `${BASE_URL}events.json?&apikey=${API_KEY}&page=${page}&size=12`;
+            const responce = await fetch(searchRequest);
+            const result = await responce.json();
+            return result;
+        } catch (err) { return err };
     }
+
 };
 
 

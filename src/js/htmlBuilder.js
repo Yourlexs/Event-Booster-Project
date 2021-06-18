@@ -17,7 +17,6 @@ function listBuilder(data) {
 };
 
 
-
 export function listBuilderFromForm(data) {
     // console.log(data);
     listBuilder(data);
@@ -30,6 +29,15 @@ export function listBuilderFromForm(data) {
     listBuilder(data)
     modalListener();
 };
+
+export function listBuilderRandom(data) {
+    const random = data.page.number;
+    listBuilder(data);
+    pagesBuilder(data, random);
+    modalListener();
+};
+
+
 
 
 
