@@ -48,6 +48,10 @@ ul li {
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
+  &::placeholder {
+    color: $secondary-text-color;
+  }
+
   &:focus,
   &:active {
     outline: none;
@@ -106,6 +110,8 @@ ul li {
   font-weight: 400;
   line-height: 1.2;
 
+  cursor: pointer;
+
   transition-property: outline;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -113,6 +119,7 @@ ul li {
   &:focus,
   &:active {
     outline: none;
+    border-radius: 20px 20px 0px 0px;
   }
 }
 
@@ -128,22 +135,43 @@ select {
   }
 }
 
-.custom-select {
+.select-label {
   position: relative;
+
+  &::after {
+    content: '\1F893';
+    position: absolute;
+    font-size: 40px;
+    top: -28px;
+    right: -245px;
+    color: $secondary-text-color;
+    pointer-events: none;
+    -webkit-transition: 0ms all ease;
+    -o-transition: 0ms all ease;
+    transition: 0ms all ease;
+  }
 }
 
-.custom-select::after {
-  content: '\1F893';
+select:focus + .select-label::after {
+  content: '\1F891';
   position: absolute;
   font-size: 40px;
-  top: 12px;
-  right: 30px;
+  top: -62px;
+  right: -245px;
   color: $secondary-text-color;
   pointer-events: none;
-  -webkit-transition: 0.25s all ease;
-  -o-transition: 0.25s all ease;
-  transition: 0.25s all ease;
+  -webkit-transition: 0ms all ease;
+  -o-transition: 0ms all ease;
+  transition: 0ms all ease;
 }
 
-// треугольник вниз \1F893
-// треугольник вверх \1F891
+.option {
+  background-color: rgb(150, 150, 150);
+  backdrop-filter: blur(20px);
+  color: #cccccc;
+  border-radius: 20px;
+}
+
+option:checked {
+  background-color: #dc56c5;
+}
