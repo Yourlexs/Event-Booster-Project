@@ -21,8 +21,8 @@
     <h2 class="modal__subheader">When</h2>
     <p class="modal__text">{{dates.start.localDate}}<br>{{dates.start.localTime}} ({{dates.timezone}})</p>
     <h2 class="modal__subheader">Where</h2>
-    {{#each _embedded.venues}} <a href="https://maps.google.com/?ll={{this.location.latitude}},{{this.location.longitude}}"> <p class="modal__text">{{this.city.name}},
-      {{this.country.name}}{{/each}}<br>{{#each _embedded.venues}}{{this.name}}</p></a>{{/each}}
+    {{#each _embedded.venues}} <a href="https://maps.google.com/?ll={{this.location.latitude}},{{this.location.longitude}}" target="_blank"> <p class="modal__text">{{this.city.name}},
+      {{this.country.name}}<br>{{this.name}}</p></a>{{/each}}
     <h2 class="modal__subheader">Who</h2>
     <p class="modal__text">{{name}}</p>
     <h2 class="modal__subheader">Prices</h2>
