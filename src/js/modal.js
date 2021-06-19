@@ -52,8 +52,7 @@ async function renderModalByEvent(event) {
   const responce = await apiSearch.getById(id).then(okay => okay).catch(console.log);
   const fixedResponce = filter(responce);
 
-
-    // передача нужного ивента в шаблонизатор 
+    // передача исправленного ивента в шаблонизатор модалки
   const modalHtml = modalTpl(fixedResponce._embedded.events['0']);
   modalInfoEl.innerHTML = modalHtml;
   console.log(fixedResponce, 'подробная информация по ивенту');
