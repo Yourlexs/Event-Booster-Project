@@ -58,8 +58,10 @@ function selectHandler(event) {
 
 
 
-
-    
-
+callRandomEvents();
+function callRandomEvents() {
+    const randomNumber = Math.floor(Math.random() * 49);
+    eventApi.getRandom(randomNumber).then(htmlConstructor.listBuilderRandom).catch(console.log);
+};
 
 

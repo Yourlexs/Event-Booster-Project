@@ -3,11 +3,11 @@
     <div class='photo-card'>
       <div class='box'></div>
       <picture>
+        {{!-- {{#each images}} --}}
+        {{!-- <source srcset="{{this.url}}" @media screen and (min-aspect-ratio: {{this.ratio}}) width="{{this.width}}"
+          height="{{this.height}}" />{{/each}} --}}
         {{#each images}}
-        <source srcset="{{this.url}}" @media screen and (min-aspect-ratio: {{this.ratio}}) width="{{this.width}}"
-          height="{{this.height}}" />{{/each}}
-        {{!-- {{#each images}}
-          <source srcset='{{this.url}}' />{{/each}} --}}
+          <source srcset='{{this.url}}' />{{/each}}
         <img src='' alt='' class='page-albom'/>
       </picture>
     </div>
