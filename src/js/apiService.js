@@ -18,7 +18,6 @@ const eventsApi = {
             const searchRequest = `${BASE_URL}events.json?&countryCode=${countryCode}&apikey=${API_KEY}&size=12&page=${page}`;
             const responce = await fetch(searchRequest);
             const result = await responce.json();
-            // console.log(result)
             return result;
         } catch (err) { return err };
     },
