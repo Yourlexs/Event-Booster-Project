@@ -1,6 +1,7 @@
 import eventTpl from '../temlates/event.hbs';
 import pagesBuilder from './pagesBuilder'
 import modalListener from './modal';
+import filter from './eventsFilter';
 
 
 const refs = {
@@ -18,26 +19,23 @@ function listBuilder(data) {
 
 
 export function listBuilderFromForm(data) {
-    // console.log(data);
-    listBuilder(data);
-    pagesBuilder(data);
+    const fixedResponce = filter(data);
+    listBuilder(fixedResponce);
+    pagesBuilder(fixedResponce);
     modalListener();
 };
 
 
- export function listBuilderFromPages(data) {
-    listBuilder(data)
+export function listBuilderFromPages(data) {
+    const fixedResponce = filter(data);
+    listBuilder(fixedResponce);
     modalListener();
 };
 
 export function listBuilderRandom(data) {
     const random = data.page.number;
-    listBuilder(data);
-    pagesBuilder(data, random);
+    const fixedResponce = filter(data);
+    listBuilder(fixedResponce);
+    pagesBuilder(fixedResponce, random);
     modalListener();
 };
-
-
-
-
-
