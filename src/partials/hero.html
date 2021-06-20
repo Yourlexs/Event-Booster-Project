@@ -11,8 +11,9 @@
       </svg>
     </div>
     <div class="custom-select">
-      <select name="" id="js-select" class="select-country">
-        <option class="option" selected disabled>Choose country</option>
+      <select name="" id="js-select" class="select-country" onmousedown="if(this.options.length>7){this.size=7;}"  onchange='this.size=0;' onblur="this.size=0;">
+        <option class="option disabled" selected disabled>Choose country</option>
+        <option class="option disabled" disabled>___________________________</option>
         <option class="option" value="US">USA</option>
         <option class="option" value="AD">Andorra</option>
         <option class="option" value="AI">Anguilla</option>
