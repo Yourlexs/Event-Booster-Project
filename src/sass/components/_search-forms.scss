@@ -134,7 +134,6 @@ select {
   &:focus,
   &:active {
     outline: none;
-    height: 210px;
     border-radius: 20px;
     padding: 10px 0px 10px 0px;
   }
@@ -193,16 +192,20 @@ select:focus + .select-label::after {
 
   padding: 0px 50px 0px 30px;
 
-  &.disabled {
-    color: $secondary-text-color;
+  &:hover {
+    background-color: $pink-text-color;
+    color: white;
   }
-
-  // &:hover { // тестовые стили, можно удалить
-  //   background-color: #dc56c5;
-  //   color: white;
-  // }
 }
 
 option:checked {
   background-color: #dc56c5 !important;
+}
+
+.option__decor {
+  color: $secondary-text-color;
+  max-width: 270px;
+  max-height: 170px;
+
+  padding: 0px 50px 0px 30px;
 }
