@@ -137,6 +137,16 @@ select {
     border-radius: 20px;
     padding: 10px 0px 10px 0px;
   }
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    background-color: 0000;
+    border-radius: 20px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: $secondary-text-color;
+  }
 }
 
 .select-label {
