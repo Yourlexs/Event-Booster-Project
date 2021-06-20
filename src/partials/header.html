@@ -1,3 +1,40 @@
 <header class="header">
-  <div class="logo-container"></div>
+  <div class="header-container">
+    <div class="logo-container"></div>
+    <button type="button" class="reg-button">
+      <svg class="reg-icon">
+        <path
+          d="M9.5 11A5.5 5.5 0 119.51-.01 5.5 5.5 0 019.5 11zm0-10a4.5 4.5 0 10.01 9.01A4.5 4.5 0 009.5 1zM17.5 20h-16A1.5 1.5 0 010 18.5c0-.07.01-1.69 1.23-3.3a7.13 7.13 0 012.86-2.22C5.56 12.33 7.38 12 9.5 12s3.94.33 5.4.98a7.14 7.14 0 012.87 2.22A5.97 5.97 0 0119 18.5c0 .83-.67 1.5-1.5 1.5zm-8-7c-3.49 0-6.06.95-7.44 2.76C1.02 17.1 1 18.49 1 18.5c0 .28.22.5.5.5h16a.5.5 0 00.5-.5c0-.01-.02-1.4-1.06-2.74C15.56 13.96 13 13 9.5 13z"
+        />
+      </svg>
+    </button>
+    <div class="reg-backdrop is-hidden">
+      <div class="reg-modal container">
+        <button type="button" class="reg-close-button" data-modal-close>
+          <svg class="close-icon">
+            <use href="./images/icons/sprite.svg#close-button"></use>
+          </svg>
+        </button>
+        <form action="#" method="#" class="reg-form">
+          <b class="reg-title">register now</b>
+
+          <label class="reg-label"
+            >Name
+            <input type="text" name="name" class="reg-input" />
+          </label>
+
+          <label class="reg-label"
+            >Phone
+            <input type="tel" name="tel" class="reg-input" />
+          </label>
+
+          <label class="reg-label"
+            >Email
+            <input type="email" name="mail" class="reg-input" />
+          </label>
+          <button type="submit" class="send-button">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </header>
