@@ -53,7 +53,6 @@ function selectOpen(event) {
 };
 
 function selectClosed(event) {
-    console.log('сработал блур')
     event.target.size = '';
     event.target.style.height = ''
 };
