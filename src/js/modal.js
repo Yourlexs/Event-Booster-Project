@@ -2,6 +2,7 @@
 
 import modalTpl from '../temlates/modal.hbs';
 import apiSearch from './apiService';
+import filter from './eventsFilter';
 
 // Логика работы модального окна
 
@@ -48,12 +49,13 @@ function clearModalInfo() {
 
 async function renderModalByEvent(event) {
   const id = event.currentTarget.getAttribute('id');
-  const eventFromApi = await apiSearch.getById(id)
-    .then(responce => responce._embedded.events['0'])
-    .catch(console.log);
-    
-  const modalHtml = modalTpl(eventFromApi);
+  const responce = await apiSearch.getById(id).then(okay => okay).catch(console.log);
+  const fixedResponce = filter(responce);
+
+    // передача исправленного ивента в шаблонизатор модалки
+  const modalHtml = modalTpl(fixedResponce._embedded.events['0']);
   modalInfoEl.innerHTML = modalHtml;
+  console.log(fixedResponce, 'подробная информация по ивенту');
 };
 
   
