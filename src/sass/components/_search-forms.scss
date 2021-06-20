@@ -12,10 +12,13 @@ ul li {
   justify-content: center;
   align-items: center;
 
+  z-index: 1000;
+
   margin-top: 25px;
 
   @media screen and (min-width: $tablet) {
     flex-direction: row;
+    align-items: flex-start;
     margin-top: 27px;
   }
 
@@ -115,12 +118,6 @@ ul li {
   transition-property: outline;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-  &:focus,
-  &:active {
-    outline: none;
-    border-radius: 20px 20px 0px 0px;
-  }
 }
 
 select {
@@ -133,18 +130,38 @@ select {
   &::-ms-expand {
     display: none;
   }
+
+  &:focus,
+  &:active {
+    outline: none;
+    height: 210px;
+    border-radius: 20px;
+    padding: 10px 0px 10px 0px;
+  }
 }
 
 .select-label {
   position: relative;
 
   &::after {
-    content: '\1F893';
+    content: ' ';
+
+    display: inline-block;
+    width: 17px;
+    height: 12px;
+    border: 1px solid transparent;
+    border-radius: 1px;
+    background-color: transparent;
+    background-image: url(../images/icons/closed-svg.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+
     position: absolute;
-    font-size: 40px;
-    top: -28px;
-    right: -245px;
+    top: -26px;
+    right: -240px;
+
     color: $secondary-text-color;
+
     pointer-events: none;
     -webkit-transition: 0ms all ease;
     -o-transition: 0ms all ease;
@@ -153,12 +170,16 @@ select {
 }
 
 select:focus + .select-label::after {
-  content: '\1F891';
+  content: ' ';
+
+  background-image: url(../images/icons/opened-svg.svg);
+
   position: absolute;
-  font-size: 40px;
-  top: -62px;
-  right: -245px;
+  top: -196px;
+  right: -240px;
+
   color: $secondary-text-color;
+
   pointer-events: none;
   -webkit-transition: 0ms all ease;
   -o-transition: 0ms all ease;
@@ -166,12 +187,17 @@ select:focus + .select-label::after {
 }
 
 .option {
-  background-color: rgb(150, 150, 150);
-  backdrop-filter: blur(20px);
   color: #cccccc;
-  border-radius: 20px;
+  max-width: 270px;
+  max-height: 170px;
+
+  padding: 0px 50px 0px 30px;
+
+  &.disabled {
+    color: $secondary-text-color;
+  }
 }
 
 option:checked {
-  background-color: #dc56c5;
+  background-color: #dc56c5 !important;
 }
