@@ -196,6 +196,11 @@ select:focus + .select-label::after {
   &.disabled {
     color: $secondary-text-color;
   }
+
+  // &:hover { // тестовые стили, можно удалить
+  //   background-color: #dc56c5;
+  //   color: white;
+  // }
 }
 
 option:checked {

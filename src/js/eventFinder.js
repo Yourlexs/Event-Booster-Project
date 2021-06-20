@@ -43,16 +43,21 @@ function selectHandler(event) {
     const country = event.target.value;
     const findWord = refs.input.value.trim();
 
-    if (country.length > 2) { return };
+    if (country.length > 2) {
+        event.target.blur();
+        return
+    };
 
     if (findWord) {
         console.log('поиск по стране и слову (селектор)')
         eventApi.getByKeyAndCountry(findWord, country).then(htmlConstructor.listBuilderFromForm).catch(console.log);
+        cevent.target.blur();
         return
     };
 
     console.log('поиск по стране (селектор)')
     eventApi.getByCountry(country).then(htmlConstructor.listBuilderFromForm).catch(console.log);
+    event.target.blur();
 };
     
 
