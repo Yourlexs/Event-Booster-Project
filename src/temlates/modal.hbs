@@ -1,17 +1,17 @@
 <div class="modal__top-image-container">
-  <picture>
+  <picture class="modal__top-image">
     {{#each images}}
     <source srcset="{{this.url}}"/>{{/each}}
-    <img src="" alt="Исполнитель" class="modal__top-image" />
+    <img src="" alt="Author" class="modal__top-image" />
   </picture>
 </div>
 
 <div class="modal__information-container">
   <div class="modal__side-image-container">
-    <picture>
+    <picture class="modal__side-image">
       {{#each images}}
       <source srcset="{{this.url}}"/>{{/each}}
-      <img src="" alt="Исполнитель" class="modal__side-image" />
+      <img src="" alt="Author" class="modal__side-image" />
     </picture>
   </div>
 
