@@ -27,4 +27,4 @@ function e(e,t,n){fetch(`http://localhost:8080/addUser?user=${e}&phone=${t}&emai
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/eventFinder"),require("./js/modal"),require("./js/eventsFilter"),require("./js/openRegistration"),require("./js/registration");
 },{"./sass/main.scss":"clu1","./js/eventFinder":"ybdx","./js/modal":"RSqK","./js/eventsFilter":"XHeE","./js/openRegistration":"BBEU","./js/registration":"vz0I"}]},{},["Focm"], null)
-//# sourceMappingURL=/event-booster-project/src.8265f774.js.map
+//# sourceMappingURL=/event-booster-project/src.6605dd1b.js.map
