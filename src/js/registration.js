@@ -61,7 +61,6 @@ function checkForFilling (user,phone,email) {
       
      }
    else {
-    //alert('Вы зарегистрированы')
     return true;
     
   }
