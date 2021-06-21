@@ -110,3 +110,8 @@
 .team-link {
   color: $secondary-text-color;
 }
+
+.team-link:hover,
+.team-link:focus {
+  color: $pink-text-color;
+}
