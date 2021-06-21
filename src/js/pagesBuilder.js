@@ -70,13 +70,9 @@ function pageLinkHandler(event) {
 
         pageNumberSwitcher(event);
 };
-
-
-
 function pageNumberSwitcher(event) {
     let allPages = document.querySelectorAll('a.link');
     const clickedPageNumer = event.target.textContent;
-    // const firsPageNumber = allPages[0].textContent;
     const lastPageNumber = allPages[allPages.length - 1].textContent;
 
     if (lastPageNumber > 6) {

@@ -7,10 +7,7 @@ const refs = {
     select: document.querySelector('#js-select')
 };
 
-refs.form.addEventListener('submit', formHandler);
-function formHandler(event) {
-    event.preventDefault();
-};
+refs.form.addEventListener('submit', event => event.preventDefault());
 
 refs.input.addEventListener('change', inputHandler);
 refs.select.addEventListener('change', selectHandler);

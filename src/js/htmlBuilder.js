@@ -10,10 +10,12 @@ const refs = {
     options: document.querySelectorAll('.option')
 };
 
-
 function listBuilder(data) {
     refs.ulElement.innerHTML = '';
-    if (!data.page.totalElements) { return console.log('подходящих ивентов не найдено') };
+    if (!data.page.totalElements) {
+        refs.ulElement.innerHTML = '<li class="sorry-message">Извините, запрос не найден</>'
+        return console.log('подходящих ивентов не найдено')
+    };
     const events = data._embedded.events;
     const cardListHtml = eventTpl(events);
     refs.ulElement.insertAdjacentHTML('beforeend', cardListHtml);
@@ -49,11 +51,13 @@ refs.select.addEventListener('blur', selectClosed);
 
 function selectOpen(event) {
     event.target.size = '7';
-    event.target.style.height = '200px'
+    event.target.style.height = '200px';
 };
 
 function selectClosed(event) {
     event.target.size = '';
-    event.target.style.height = ''
+    event.target.style.height = '';    
 };
+
+
 

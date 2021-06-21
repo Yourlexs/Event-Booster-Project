@@ -160,3 +160,8 @@ body {
     height: 227px;
   }
 }
+// стили для сообщения, при пустом ответе с бэка
+.sorry-message {
+  font-size: 16px;
+  color: white;
+}
