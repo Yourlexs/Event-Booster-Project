@@ -2,11 +2,10 @@ import eventApi from './apiService';
 import * as htmlConstructor from './htmlBuilder';
 
 const refs = {
-    form: document.querySelector('form'),
+    form: document.querySelector('#js-form'),
     input: document.querySelector('#js-input'),
     select: document.querySelector('#js-select')
 };
-
 
 refs.form.addEventListener('submit', formHandler);
 function formHandler(event) {
@@ -51,7 +50,7 @@ function selectHandler(event) {
     if (findWord) {
         console.log('поиск по стране и слову (селектор)')
         eventApi.getByKeyAndCountry(findWord, country).then(htmlConstructor.listBuilderFromForm).catch(console.log);
-        cevent.target.blur();
+        event.target.blur();
         return
     };
 
