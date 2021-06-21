@@ -18,17 +18,17 @@ backdropEl.addEventListener('click', (event) => {
 
 
 function openModal(e) {
-  const isEvent = e.target.classList.contains('page-albom');
-  if (!isEvent) {
-        return;
-  }
+  // const isEvent = e.target.classList.contains('page-albom');
+  // if (!isEvent) {
+  //       return;
+  // }
   clearModalInfo();
   // renderModalInfo();
   renderModalByEvent(e);
   toggleModal();
 };
 
-function closeModal(e) {
+function closeModal() {
   toggleModal();
   // clearModalInfo();
 };

@@ -5,7 +5,9 @@ import filter from './eventsFilter';
 
 
 const refs = {
-    ulElement: document.querySelector('.list-allExecutor')
+    ulElement: document.querySelector('.list-allExecutor'),
+    select: document.querySelector('#js-select'),
+    options: document.querySelectorAll('.option')
 };
 
 
@@ -39,3 +41,19 @@ export function listBuilderRandom(data) {
     pagesBuilder(fixedResponce, random);
     modalListener();
 };
+
+
+
+refs.select.addEventListener('focus', selectOpen);
+refs.select.addEventListener('blur', selectClosed);
+
+function selectOpen(event) {
+    event.target.size = '7';
+    event.target.style.height = '200px'
+};
+
+function selectClosed(event) {
+    event.target.size = '';
+    event.target.style.height = ''
+};
+
