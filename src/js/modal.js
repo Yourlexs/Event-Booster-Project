@@ -36,7 +36,6 @@ function closeModal() {
 function toggleModal() {
   document.body.classList.toggle('modal-open');
   backdropEl.classList.toggle('is-hidden');
-  
 };
 
 // function renderModalInfo() {
@@ -67,8 +66,3 @@ function listenerForModal() {
 
 
 export default listenerForModal;
-
-
-
-
-
