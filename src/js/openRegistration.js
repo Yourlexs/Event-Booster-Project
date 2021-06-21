@@ -13,9 +13,8 @@ function onOpenRegistration() {
 }
 
 function onCloseRegistration() {
-      refs.regBackdrop.classList.add('is-hidden');
-      console.log('aaaaaaa')
-     removeEvLis();
+  refs.regBackdrop.classList.add('is-hidden');
+  removeEvLis();
 }
 
 function onCloseBackdropReg(e) {
