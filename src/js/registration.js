@@ -1,4 +1,4 @@
-//import userRegistration from './auth.js'
+
 function userRegistration(user,phone,email){
     const url = `http://localhost:8080/addUser?user=${user}&phone=${phone}&email=${email}`;
   
