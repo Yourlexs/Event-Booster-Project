@@ -1,16 +1,18 @@
 <div class="modal__top-image-container">
   <picture class="modal__top-image">
-    {{#each images}}
-    <source srcset="{{this.url}}"/>{{/each}}
-    <img src="" alt="Author" class="modal__top-image" />
+    <source srcset="{{images.[2].url}} 1x, {{images.[3].url}} 2x" media="(min-width: 1200px)" />
+    <source srcset="{{images.[1].url}} 1x, {{images.[2].url}} 2x" media="(min-width: 768px)" />
+    <source srcset="{{images.[0].url}} 1x, {{images.[1].url}} 2x" media="(max-width: 767px)" />
+  <img src="" alt="Author" class="modal__top-image" />
   </picture>
 </div>
 
 <div class="modal__information-container">
   <div class="modal__side-image-container">
     <picture class="modal__side-image">
-      {{#each images}}
-      <source srcset="{{this.url}}"/>{{/each}}
+      <source srcset="{{images.[2].url}} 1x, {{images.[3].url}} 2x" media="(min-width: 1200px)" />
+      <source srcset="{{images.[1].url}} 1x, {{images.[2].url}} 2x" media="(min-width: 768px)" />
+      <source srcset="{{images.[0].url}} 1x, {{images.[1].url}} 2x" media="(max-width: 767px)" />
       <img src="" alt="Author" class="modal__side-image" />
     </picture>
   </div>
@@ -44,6 +46,6 @@
   </div>
 </div>
 
-<a class="modal__more-info-link" href='https://www.google.com/search?q={{name}}' target="_blank" title="More from this author">
+<a class="modal__more-info-link" href='{{#each _embedded.attractions}}{{#each this.externalLinks.homepage}}{{this.url}}{{/each}}{{/each}}' target="_blank" title="More from this author">
   More from this author
 </a>

@@ -1,23 +1,26 @@
 {{#each this}}
-  <li class='list-executor' id="{{id}}">
+  <li class='list-executor' id='{{id}}'>
     <div class='photo-card'>
       <div class='box-ev'></div>
       <picture>
-        {{!-- {{#each images}} --}}
-        {{!-- <source srcset="{{this.url}}" @media screen and (min-aspect-ratio: {{this.ratio}}) width="{{this.width}}"
-          height="{{this.height}}" />{{/each}} --}}
-        {{#each images}}
-          <source srcset='{{this.url}}' />{{/each}}
-        <img src='' alt='' class='page-albom'/>
+        <source srcset='{{images.2.url}} 1x, {{images.3.url}} 2x' media='(min-width: 1200px)' />
+        <source srcset='{{images.1.url}} 1x, {{images.2.url}} 2x' media='(min-width: 768px)' />
+        <source srcset='{{images.0.url}} 1x, {{images.1.url}} 2x' media='(max-width: 767px)' />
+        <img src='' alt='' class='page-albom' />
       </picture>
     </div>
     <div class='info'>
       <h2 class='name-albom'>{{name}}</h2>
       <p class='album-release-date'>{{dates.start.localDate}}</p>
-      <p class='place-performance'>
-        <i class='material-icons'>room</i>
-        {{#each _embedded.venues}}{{this.name}}{{/each}}
-      </p>
+      {{#each _embedded.venues}}
+        <a
+          href='https://maps.google.com/?ll={{this.location.latitude}},{{this.location.longitude}}'
+          target='_blank'
+        >
+          <p class='place-performance'>
+            <i class='material-icons'>room</i>
+            {{this.name}}
+          </p></a>{{/each}}
     </div>
   </li>
 {{/each}}
