@@ -1,3 +1,4 @@
+import onCloseRegistration from './openRegistration';
 
 function userRegistration(user,phone,email){
     const url = `http://localhost:8080/addUser?user=${user}&phone=${phone}&email=${email}`;
@@ -62,6 +63,7 @@ function checkForFilling (user,phone,email) {
      }
    else {
     //alert('Вы зарегистрированы')
+       onCloseRegistration();
     return true;
     
   }
