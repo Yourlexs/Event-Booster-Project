@@ -1,34 +1,35 @@
 import onCloseRegistration from './openRegistration';
 
-function userRegistration(user,phone,email){
-    const url = `http://localhost:8080/addUser?user=${user}&phone=${phone}&email=${email}`;
-  
-  
-  fetch(url).then((response) => {
-   //console.log('text ' , response);
-   if (response.status == 200) {
-     console.log('ok');
-   }
-  
-   if (response.status == 400) {
-     console.log('BAD REQUEST');
-     
-   }
-   response.json().then((data) => {
-       console.log(data.value);
-       
-   });
-  });
-  }
+async function userRegistration(user,phone,email){
+  const url = `http://185.238.137.46:8080/addUser?user=${user}&phone=${phone}&email=${email}`;
+
+try {
+  await fetch(url).then((response) => {
+ //console.log('text ' , response);
+ if (response.status == 200) {
+   console.log('ok');
+ }
+
+ if (response.status == 400) {
+   console.log('BAD REQUEST');
+ }
+ response.json().then((data) => {
+     console.log(data);
+ });
+});
+} catch (error) {
+  alert('Такой пользователь уже есть');
+}
+}
   
   const form = document.getElementById('form')
   const button = document.getElementById ('button-submit')
   
-  //form.addEventListener('', checkForFilling)
-  button.addEventListener('click',buttonPrevent)
+  form.addEventListener('submit', checkForFilling)
+  button.addEventListener('click',onFormSubmit)
   
   //  функия для отправки формы
-  function buttonPrevent (e){
+  function onFormSubmit (e){
     e.preventDefault();
     const user = document.getElementById('user').value
     const phone = document.getElementById('phone').value
@@ -38,7 +39,7 @@ function userRegistration(user,phone,email){
       userRegistration(user,phone,email)
     }
   
-    console.log(e)
+    e.currentTarget.reset();
   }
   
   
@@ -48,24 +49,20 @@ function checkForFilling (user,phone,email) {
   if (user === '') {
      alert('Ведите имя');
     return false;
-   
-    }
-    if (phone === '') {
+  }
+
+  if (phone === '') {
       alert('Ведите телефон');
      return false;
-      
-     }
-  
-     if (email === '') {
-      alert('Ведите email');
-     return false;
-      
-     }
-   else {
-    //alert('Вы зарегистрированы')
-       onCloseRegistration();
-    return true;
-    
   }
   
-   }
+  if (email === '') {
+      alert('Ведите email');
+     return false;
+  }
+
+   else {
+   onCloseRegistration();
+    return true;
+  }
+}
