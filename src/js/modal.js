@@ -67,19 +67,17 @@ async function renderModalByEvent(event) {
 
 function showMore(event) {
   event.preventDefault();
+  input.value = authorName;;
   const country = select.value;
-  const keyWord = authorName;
-  toggleModal()
+  select.value = 'Choose country'
+  toggleModal();
+  
   if (country.length > 2) {
-    console.log('сработал селект')
-    apiSearch.getByKey(keyWord).then(htmlConstructor.listBuilderFromForm).catch(console.log);
+    apiSearch.getByKey(authorName).then(htmlConstructor.listBuilderFromForm).catch(console.log);
+    return
   };
 
-  apiSearch.getByKeyAndCountry(keyWord, country).then(htmlConstructor.listBuilderFromForm).catch(console.log);
-
-  
-  
-
+  apiSearch.getByKeyAndCountry(authorName, country).then(htmlConstructor.listBuilderFromForm).catch(console.log);
 }
 
 // функция дл вызова в htmlbuilder'е - нужна чтобы получить динамичкскую разметку с карточек
