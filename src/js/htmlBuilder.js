@@ -48,12 +48,17 @@ export function listBuilderRandom(data) {
 
 refs.select.addEventListener('focus', selectOpen);
 refs.select.addEventListener('blur', selectClosed);
+refs.options.forEach(item => item.addEventListener('backbutton', testFn));
 
 function selectOpen(event) {
+    refs.select.addEventListener('backbutton', testFn)
     event.target.size = '7';
     event.target.style.height = '200px';
 };
 
+function testFn(event) {
+    alert('андройд это кек')
+}
 function selectClosed(event) {
     event.target.size = '';
     event.target.style.height = '';    
@@ -61,3 +66,13 @@ function selectClosed(event) {
 
 
 
+// // refs.options.forEach(item => item.addEventListener('click', test2));
+
+// function test(event) {
+//     console.log('test')
+//     console.log(event.target);
+// }
+
+// function test2(event) {
+//     console.log('test2')
+// }
