@@ -42,9 +42,7 @@ try {
     e.currentTarget.reset()
    
   }
-  
-  
-   //функция для проверки правильности заполнения формы
+ //функция для проверки правильности заполнения формы
 function checkForFilling (user,phone,email) {
     
   if (user === '') {
