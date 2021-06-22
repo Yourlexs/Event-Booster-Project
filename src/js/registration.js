@@ -1,35 +1,42 @@
 import onCloseRegistration from './openRegistration';
 
 async function userRegistration(user,phone,email){
-  const url = `http://185.238.137.46:8080/addUser?user=${user}&phone=${phone}&email=${email}`;
+  const url = `http://185.238.137.146:8080/addUser?user=${user}&phone=${phone}&email=${email}`;
 
 try {
-  await fetch(url).then((response) => {
- //console.log('text ' , response);
- if (response.status == 200) {
-   console.log('ok');
- }
+      await fetch(url).then((response) => {
+    
+        response.json().then((data) => {
+          var requestData = data;
+          var status = requestData["status"];
 
- if (response.status == 400) {
-   console.log('BAD REQUEST');
- }
- response.json().then((data) => {
-     console.log(data);
- });
-});
-} catch (error) {
-  alert('Такой пользователь уже есть');
-}
+          console.log('status ', status);
+
+        if (response.status == 200) {
+              alert('Зареганы успешно');
+        }
+
+        if (response.status == 400) {
+          alert ('Такой пользователь уже существует');
+        }
+
+      });
+
+    });
+  } catch (error) {
+    console.log('error ', error)
+  }
 }
   
   const form = document.getElementById('form')
   const button = document.getElementById ('button-submit')
   
-  form.addEventListener('submit', checkForFilling)
-  button.addEventListener('click',onFormSubmit)
+  form.addEventListener('submit', onFormSubmit)
+  button.addEventListener('click',checkForFilling)
   
   //  функия для отправки формы
   function onFormSubmit (e){
+
     e.preventDefault();
     const user = document.getElementById('user').value
     const phone = document.getElementById('phone').value
@@ -62,7 +69,7 @@ function checkForFilling (user,phone,email) {
   }
 
    else {
-   onCloseRegistration();
+  onCloseRegistration();
     return true;
   }
 }
