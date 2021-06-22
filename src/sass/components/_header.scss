@@ -192,6 +192,8 @@
 
   transition: background-color $timing $timing-function;
 
+  cursor: pointer;
+
   &:hover,
   &:focus {
     background-color: $buy-btn-hover-color;

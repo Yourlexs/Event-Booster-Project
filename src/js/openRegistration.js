@@ -28,3 +28,4 @@ function removeEvLis() {
   refs.closeRegistration.removeEventListener('click', onCloseRegistration);
   refs.regBackdrop.removeEventListener('click', onCloseRegistration);
 }
+export default onCloseRegistration;
