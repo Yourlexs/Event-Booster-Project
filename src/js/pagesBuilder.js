@@ -51,9 +51,14 @@ function pagesBuilder(data, random = 0) {
 
 
 function pageLinkHandler(event) {
+    console.log('вы листаете не рандомные ивенты')
     const findword = refs.input.value.trim();
     const country = refs.select.value;
     const page = event.target.textContent - 1;
+    const currentPage = document.querySelector('.link--current').textContent;
+    const clickedPage = event.target.textContent;
+    
+    if (clickedPage === currentPage) { return };
 
     if (findword && country.length > 2) {
         apiSearch.getByKey(findword, page).then(htmlConstructor.listBuilderFromPages);
