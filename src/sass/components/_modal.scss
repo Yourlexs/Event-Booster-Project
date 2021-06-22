@@ -8,6 +8,7 @@
   backdrop-filter: blur(3px);
 
   position: fixed;
+  z-index: 1500;
   top: 0px;
   left: 0px;
   width: 100%;
@@ -104,10 +105,7 @@
 
   &__information-container {
     display: flex;
-    // justify-content: flex-start;
     width: 100%;
-    // height: 150px;
-    // background-color: lawngreen;
   }
 
   &__side-image-container {
@@ -184,7 +182,7 @@
     }
   }
 
-  &__ticket-container {
+  &__ticket-and-location-container {
     display: flex;
     flex-direction: column;
     justify-content: center;

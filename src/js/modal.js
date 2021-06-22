@@ -17,12 +17,10 @@ backdropEl.addEventListener('click', (event) => {
 
 
 function openModal(e) {
-
   if (e.target.classList.contains('place-performance')) { return };
   
   clearModalInfo();
   renderModalByEvent(e);
-  toggleModal();
 };
 
 
@@ -31,27 +29,30 @@ function toggleModal() {
   backdropEl.classList.toggle('is-hidden');
 };
 
+
 function clearModalInfo() {
   modalInfoEl.innerHTML = '';
 };
+
 
 async function renderModalByEvent(event) {
   const id = event.currentTarget.getAttribute('id');
   const responce = await apiSearch.getById(id).then(okay => okay).catch(console.log);
   const fixedResponce = filter(responce);
 
-    // передача исправленного ивента в шаблонизатор модалки
+  // Передача исправленного ивента в шаблонизатор модалки
   const modalHtml = modalTpl(fixedResponce._embedded.events['0']);
   modalInfoEl.innerHTML = modalHtml;
+  // Здесь включаем модалку чтоб не было пустого окошка
+  toggleModal();
   console.log(fixedResponce, 'подробная информация по ивенту');
 };
 
-  
+
 function listenerForModal() {
   const cardListArray = document.querySelectorAll('.list-executor');
   cardListArray.forEach(item => item.addEventListener('click', openModal));
 };
-
 
 
 export default listenerForModal;
