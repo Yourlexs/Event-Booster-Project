@@ -21,6 +21,8 @@ backdropEl.addEventListener('click', (event) => {
 
 function openModal(e) {
   if (e.target.classList.contains('place-performance') || e.target.classList.contains('material-icons')) { return };
+ 
+  document.addEventListener('keydown', onCloseModalEsc);
   clearModalInfo();
   renderModalByEvent(e);
 };
@@ -30,6 +32,13 @@ function toggleModal() {
   document.body.classList.toggle('modal-open');
   backdropEl.classList.toggle('is-hidden');
 };
+
+function onCloseModalEsc(e) {
+  if (e.code === 'Escape') {
+    toggleModal();
+    document.removeEventListener('keydown', onCloseModalEsc);
+  };
+}
 
 
 function clearModalInfo() {
