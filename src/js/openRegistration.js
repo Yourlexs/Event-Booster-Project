@@ -9,7 +9,8 @@ refs.openRegistration.addEventListener('click', onOpenRegistration);
 function onOpenRegistration() {
   refs.regBackdrop.classList.remove('is-hidden');
     refs.regBackdrop.addEventListener('click', onCloseBackdropReg);
-    refs.closeRegistration.addEventListener('click', onCloseRegistration);
+  refs.closeRegistration.addEventListener('click', onCloseRegistration);
+  document.addEventListener('keydown', onCloseRegEsc);
 }
 
 function onCloseRegistration() {
@@ -24,8 +25,17 @@ function onCloseBackdropReg(e) {
   }
 }
 
+function onCloseRegEsc(e) {
+  if (e.code === 'Escape') {
+    onCloseRegistration();
+    removeEvLis();
+  };
+}
+
 function removeEvLis() {
   refs.closeRegistration.removeEventListener('click', onCloseRegistration);
   refs.regBackdrop.removeEventListener('click', onCloseRegistration);
+  document.removeEventListener('keydown', onCloseRegEsc);
 }
+
 export default onCloseRegistration;

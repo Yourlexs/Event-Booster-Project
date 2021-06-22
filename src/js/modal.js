@@ -10,6 +10,7 @@ const closeModalBtnEl = document.querySelector('.close-button');
 const backdropEl = document.querySelector('.backdrop');
 const modalInfoEl = document.querySelector('.modal__main-container');
 
+ document.addEventListener('keydown', onCloseModalEsc);
 closeModalBtnEl.addEventListener('click', toggleModal);
 backdropEl.addEventListener('click', (event) => {
   if (event.target === event.currentTarget) toggleModal();
@@ -28,6 +29,13 @@ function toggleModal() {
   document.body.classList.toggle('modal-open');
   backdropEl.classList.toggle('is-hidden');
 };
+
+function onCloseModalEsc(e) {
+  if (e.code === 'Escape') {
+    toggleModal();
+    document.removeEventListener('keydown', onCloseModalEsc);
+  };
+}
 
 
 function clearModalInfo() {
