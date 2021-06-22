@@ -7,6 +7,7 @@ function filter(data) {
     // начало работы логики
     let newImages;
     let newDate;
+    console.log(data, 'data')
     const responce = data;
     const events = responce._embedded.events;
     events.map(item => {

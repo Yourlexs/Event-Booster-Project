@@ -8,7 +8,6 @@ const refs = {
 };
 
 refs.form.addEventListener('submit', event => event.preventDefault());
-
 refs.input.addEventListener('change', inputHandler);
 refs.select.addEventListener('change', selectHandler);
 
@@ -36,7 +35,6 @@ function inputHandler(event) {
 };
 
 function selectHandler(event) {
-    event.preventDefault();
     const country = event.target.value;
     const findWord = refs.input.value.trim();
 
@@ -57,9 +55,7 @@ function selectHandler(event) {
     event.target.blur();
 };
     
-
-
-
+// Отрисовка рандом событий, срабатывает только при первой загрузке страницы
 callRandomEvents();
 function callRandomEvents() {
     const randomNumber = Math.floor(Math.random() * 49);
