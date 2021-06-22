@@ -56,7 +56,6 @@ function pageLinkHandler(event) {
     const page = event.target.textContent - 1;
 
     if (findword && country.length > 2) {
-
         apiSearch.getByKey(findword, page).then(htmlConstructor.listBuilderFromPages);
     };
 

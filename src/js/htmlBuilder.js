@@ -13,7 +13,9 @@ const refs = {
 function listBuilder(data) {
     refs.ulElement.innerHTML = '';
     if (!data.page.totalElements) {
-        refs.ulElement.innerHTML = '<li class="sorry-message">Извините, запрос не найден</>'
+        console.log(data, 'data')
+        // refs.ulElement.innerHTML = '<li class="sorry-message">Извините, запрос не найден</>'
+        alert('Подходящие запросы не найдены, измените критерии поиска')
         return console.log('подходящих ивентов не найдено')
     };
     const events = data._embedded.events;
@@ -49,12 +51,11 @@ export function listBuilderRandom(data) {
 refs.select.addEventListener('focus', selectOpen);
 refs.select.addEventListener('blur', selectClosed);
 
-
 function selectOpen(event) {
     event.target.size = '7';
     event.target.style.height = '200px';
-};
 
+};
 
 function selectClosed(event) {
     event.target.size = '';
