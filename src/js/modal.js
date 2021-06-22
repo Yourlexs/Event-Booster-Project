@@ -10,7 +10,6 @@ const closeModalBtnEl = document.querySelector('.close-button');
 const backdropEl = document.querySelector('.backdrop');
 const modalInfoEl = document.querySelector('.modal__main-container');
 
- document.addEventListener('keydown', onCloseModalEsc);
 closeModalBtnEl.addEventListener('click', toggleModal);
 backdropEl.addEventListener('click', (event) => {
   if (event.target === event.currentTarget) toggleModal();
@@ -20,6 +19,7 @@ backdropEl.addEventListener('click', (event) => {
 function openModal(e) {
   if (e.target.classList.contains('place-performance')) { return };
   
+  document.addEventListener('keydown', onCloseModalEsc);
   clearModalInfo();
   renderModalByEvent(e);
 };
