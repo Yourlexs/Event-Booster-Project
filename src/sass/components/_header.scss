@@ -8,7 +8,9 @@
   justify-content: space-between;
 }
 
-.logo-container {
+.logo-link {
+  display: block;
+  cursor: pointer;
   width: 107px;
   height: 90px;
   background-image: linear-gradient(
@@ -43,6 +45,15 @@
       url(../images/icons/logo_desktop.svg);
     border-radius: 0 0 201px;
   }
+
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: $timing-function;
+
+  &:hover,
+  &:focus {
+    background-color: rgba(32, 13, 29, 0.6);
+  }
 }
 
 .reg-button {
@@ -53,6 +64,7 @@
   height: 60px;
   margin-right: 0px;
   margin-left: auto;
+  cursor: pointer;
 
   border-radius: 0 0 0 90px;
   outline: transparent;
@@ -60,7 +72,7 @@
   background-color: $search-fields-background-color;
   backdrop-filter: blur(30px);
 
-  transition-property: outline;
+  transition-property: background-color;
   transition-duration: 250ms;
   transition-timing-function: $timing-function;
 
