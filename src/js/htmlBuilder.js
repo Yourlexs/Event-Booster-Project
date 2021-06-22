@@ -61,3 +61,8 @@ function selectClosed(event) {
 
 
 
+// refs.options.forEach(item => item.addEventListener('onreset', test));
+
+// function test(event) {
+//     console.log('test')
+// }

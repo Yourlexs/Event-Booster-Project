@@ -36,6 +36,7 @@ function inputHandler(event) {
 };
 
 function selectHandler(event) {
+    event.preventDefault();
     const country = event.target.value;
     const findWord = refs.input.value.trim();
 
