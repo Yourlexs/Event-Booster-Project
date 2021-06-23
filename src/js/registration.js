@@ -1,7 +1,7 @@
 import onCloseRegistration from './openRegistration';
 
 async function userRegistration(user,phone,email){
-  const url = `http://185.238.137.146:8080/addUser?user=${user}&phone=${phone}&email=${email}`;
+  const url = `https://vds2107942.my-ihor.ru/addUser?user=${user}&phone=${phone}&email=${email}`;
 
 try {
       await fetch(url).then((response) => {
@@ -33,24 +33,8 @@ try {
   
   form.addEventListener('submit', onFormSubmit)
   button.addEventListener('click',checkForFilling)
-  
-  //  функия для отправки формы
-  function onFormSubmit (e){
 
-    e.preventDefault();
-    const user = document.getElementById('user').value
-    const phone = document.getElementById('phone').value
-    const email = document.getElementById('email').value
-
-    if (checkForFilling(user,phone,email)) {
-      userRegistration(user,phone,email)
-    }
-  
-    e.currentTarget.reset();
-  }
-  
-  
-   //функция для проверки правильности заполнения формы
+     //функция для проверки правильности заполнения формы
 function checkForFilling (user,phone,email) {
     
   if (user === '') {
@@ -73,3 +57,21 @@ function checkForFilling (user,phone,email) {
     return true;
   }
 }
+  
+  //  функия для отправки формы
+  function onFormSubmit (e){
+
+    e.preventDefault();
+
+    const user = document.getElementById('user').value
+    const phone = document.getElementById('phone').value
+    const email = document.getElementById('email').value
+
+    if (checkForFilling(user,phone,email)) {
+      userRegistration(user,phone,email)
+    }
+  
+    e.currentTarget.reset();
+  }
+  
+  
