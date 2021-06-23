@@ -13,7 +13,6 @@ const refs = {
 function listBuilder(data) {
     refs.ulElement.innerHTML = '';
     if (!data.page.totalElements) {
-        console.log(data, 'data')
         // refs.ulElement.innerHTML = '<li class="sorry-message">Извините, запрос не найден</>'
         alert('Подходящие запросы не найдены, измените критерии поиска')
         return console.log('подходящих ивентов не найдено')
