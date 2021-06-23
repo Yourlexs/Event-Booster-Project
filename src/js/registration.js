@@ -1,4 +1,5 @@
 import onCloseRegistration from './openRegistration';
+import notify from './notify';
 
 async function userRegistration(user,phone,email){
   const url = `https://vds2107942.my-ihor.ru/addUser?user=${user}&phone=${phone}&email=${email}`;
@@ -13,11 +14,13 @@ try {
           console.log('status ', status);
 
         if (response.status == 200) {
-              alert('Registered successfully');
+              // alert('Registered successfully');
+          notify.good('Excellent!', 'Registered successfully')
         }
 
         if (response.status == 400) {
-          alert ('This user already exists');
+          // alert ('This user already exists');
+          notify.good('Sorry', 'This user already exists')
         }
 
       });
@@ -38,17 +41,20 @@ try {
 function checkForFilling (user,phone,email) {
     
   if (user === '') {
-     alert('Lead the name');
+    //  alert('Lead the name');
+    notify.good('Please', 'Lead the name')
     return false;
   }
 
   if (phone === '') {
-      alert('Lead the phone');
+      // alert('Lead the phone');
+    notify.good('Please', 'Lead the phone')
      return false;
   }
   
   if (email === '') {
-      alert('Lead the email');
+      // alert('Lead the email');
+    notify.good('Please', 'Lead the email')
      return false;
   }
 

@@ -1,5 +1,6 @@
 import eventApi from './apiService';
 import * as htmlConstructor from './htmlBuilder';
+import notify from './notify';
 
 const refs = {
     form: document.querySelector('#js-form'),
@@ -15,7 +16,7 @@ function inputHandler(event) {
     const findWord = event.target.value.trim();
     const country = refs.select.value;
 
-    if (!findWord && country.length > 2) { return alert('введите текст или выберите страну') };
+    if (!findWord && country.length > 2) { return notify.good('Please','Type search query') };
 
     if (!findWord && country.length === 2) {
         console.log('поиск по стране (инпут)')
