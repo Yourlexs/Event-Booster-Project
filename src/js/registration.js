@@ -13,11 +13,11 @@ try {
           console.log('status ', status);
 
         if (response.status == 200) {
-              alert('Зареганы успешно');
+              alert('Registered successfully');
         }
 
         if (response.status == 400) {
-          alert ('Такой пользователь уже существует');
+          alert ('This user already exists');
         }
 
       });
@@ -38,17 +38,17 @@ try {
 function checkForFilling (user,phone,email) {
     
   if (user === '') {
-     alert('Ведите имя');
+     alert('Lead the name');
     return false;
   }
 
   if (phone === '') {
-      alert('Ведите телефон');
+      alert('Lead the phone');
      return false;
   }
   
   if (email === '') {
-      alert('Ведите email');
+      alert('Lead the email');
      return false;
   }
 
