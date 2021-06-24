@@ -78,7 +78,7 @@ function showMore(event) {
   };
 
   apiSearch.getByKeyAndCountry(authorName, country).then(htmlConstructor.listBuilderFromForm).catch(console.log);
-}
+};
 
 // функция дл вызова в htmlbuilder'е - нужна чтобы получить динамичкскую разметку с карточек
 function listenerForModal() {

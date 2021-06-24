@@ -167,7 +167,7 @@ function randomHandler(event) {
     if (clickedPage === currentPage) { return };
     pageNumberSwitcherForRandom(event);
 
-}
+};
 
 function pageNumberSwitcherForRandom(event) {
     let allPages = document.querySelectorAll('a.link');
