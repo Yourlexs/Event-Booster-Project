@@ -211,3 +211,73 @@
     background-color: $buy-btn-hover-color;
   }
 }
+
+// стили для нотификаций
+
+.ntf-form {
+  position: absolute;
+  animation: notifyAnimation 250ms;
+  top: 15px;
+  right: 15px;
+  border-radius: 50px 0px;
+  padding: 20px;
+  background: #fff2fd;
+  cursor: pointer;
+}
+
+.ntf-title {
+  margin-top: 5px;
+  color: #dc56c5;
+  font-weight: 900;
+}
+
+.js-ntf-backdrop.is-hidden {
+  pointer-events: none;
+  opacity: 0;
+}
+
+@keyframes notifyAnimation {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+// запасной вариант для нотификаций из двух версий
+// .ntf-success,
+// .ntf-error {
+//   position: absolute;
+//   animation: markupEvents 250ms;
+//   font-weight: 600;
+//   top: 15px;
+//   right: 15px;
+//   border-radius: 50px 0px;
+//   padding: 20px;
+// }
+
+// .ntf-success {
+//   background: #fff2fd;
+// }
+
+// .ntf-error {
+//   background: #fff2fd;
+// }
+
+// .ntf-error .ntf-title {
+//   margin-top: 5px;
+//   font-weight: 700;
+//   color: #e90c0c;
+// }
+
+// .ntf-success .ntf-title {
+//   margin-top: 5px;
+//   font-weight: 700;
+//   color: #4dd864;
+// }
+
+// .js-ntf-backdrop.is-hidden {
+//   pointer-events: none;
+//   opacity: 0;
+// }

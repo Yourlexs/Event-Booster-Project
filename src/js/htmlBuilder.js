@@ -2,7 +2,7 @@ import eventTpl from '../temlates/event.hbs';
 import pagesBuilder from './pagesBuilder'
 import modalListener from './modal';
 import filter from './eventsFilter';
-
+import notify from './notify';
 
 const refs = {
     ulElement: document.querySelector('.list-allExecutor'),
@@ -13,9 +13,7 @@ const refs = {
 function listBuilder(data) {
     refs.ulElement.innerHTML = '';
     if (!data.page.totalElements) {
-        console.log(data, 'data')
-        // refs.ulElement.innerHTML = '<li class="sorry-message">Извините, запрос не найден</>'
-        alert('Подходящие запросы не найдены, измените критерии поиска')
+        notify.good('Sorry', "We couldn't find any match")
         return console.log('подходящих ивентов не найдено')
     };
     const events = data._embedded.events;
